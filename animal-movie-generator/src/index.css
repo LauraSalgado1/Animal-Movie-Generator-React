@@ -488,6 +488,10 @@ form select {
   }
 }
 
+#contentWrapper {
+  scroll-margin-top: 60px;
+}
+
 .content-area {
   position: relative;
   background-size: 5%;
