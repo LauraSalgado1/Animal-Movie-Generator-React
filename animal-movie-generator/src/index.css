@@ -367,7 +367,7 @@ img {
 }
 
 .inner {
-  width: 1100px;
+  width: 730px;
   max-width: 100%;
   margin: 0 auto;
   padding: 0 64px;
@@ -376,6 +376,16 @@ img {
   .inner {
     padding: 0 32px;
   }
+}
+
+section.intro {
+  padding: 128px 0 32px;
+  text-align: center;
+  color: #fff;
+}
+
+section.intro p {
+  font-size: 2rem;
 }
 
 form {
@@ -397,13 +407,23 @@ form label {
   color: #fff;
   font-family: "Limelight", cursive;
   font-size: 3.2rem;
-  color: #fff9d7;
+  color: #fff;
+}
+@media (max-width: 700px) {
+  form label {
+    font-size: 2.8rem;
+  }
+}
+@media (max-width: 370px) {
+  form label {
+    font-size: 2.2rem;
+  }
 }
 form select {
   border-radius: 0;
   border: 2px solid #000;
   outline-offset: 5px;
-  outline-color: #fff9d7;
+  outline-color: #fff;
 }
 @media (max-width: 700px) {
   form select {
@@ -415,25 +435,21 @@ form select {
     width: 100%;
     border-left: none;
     flex-direction: column;
-    text-align: left;
-    align-items: start;
+    align-items: center;
     gap: 8px;
+    text-align: center;
   }
-}
-
-section.intro {
-  padding: 128px 0 32px;
-  text-align: center;
-  color: #fff;
-}
-
-section.intro p {
-  font-size: 2rem;
 }
 
 #contentWrapper {
   scroll-margin-top: 100px;
   padding-top: 70px;
+}
+
+@media (max-width: 700px) {
+  #contentWrapper {
+    padding-top: 98px;
+  }
 }
 
 .content-area {
@@ -465,7 +481,7 @@ main {
   list-style: none;
   width: 80%;
   background: #000;
-  padding: 0 10px 92px;
+  padding: 0 10px 10px;
 }
 @media (max-width: 700px) {
   .movies-list {
@@ -560,7 +576,7 @@ body.credit {
 h1 {
   font-family: "Limelight", cursive;
   font-size: 6.4rem;
-  color: #fff9d7;
+  color: #fff;
 }
 
 @media (max-width: 700px) {
@@ -582,18 +598,14 @@ footer p {
   margin: 5px 0;
   font-size: 1.4rem;
 }
-@media (max-width: 700px) {
-  footer {
-    padding: 20px 10px;
-  }
-}
 
 .footer-links {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  gap: 32px;
+  grid-column-gap: 32px;
+  grid-row-gap: 16px;
 }
 .footer-links p {
   margin-top: 0;
@@ -612,76 +624,69 @@ footer p {
   text-decoration: underline;
   color: #fff;
   cursor: pointer;
+  padding: 0;
 }
 
 .modal {
-  opacity: 0;
-  display: none;
   transition: opacity 0.2s ease;
   height: 100vh;
-  overflow-x: auto;
   position: fixed;
   z-index: 200;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #000;
-  /* background-image: url(images/cat-bg.svg); */
-  background-repeat: repeat;
-  background-size: 40px;
+  background-color: rgba(0, 0, 0, 0.6);
   color: #fff;
-  padding: 80px 20px;
-}
-.modal::before {
+  padding: 128px 32px;
+  animation-name: modalFade;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  animation-duration: 0.4s;
   display: block;
-  content: "";
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-  z-index: 201;
-  background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
+  cursor: pointer;
 }
+
 .modal .close {
   appearance: none;
   background: transparent;
   border: none;
   border-radius: 0;
-  padding: 3px;
+  padding: 12px;
+  margin: 0 0 0 auto;
   display: block;
   transition: opacity 0.2s ease;
   cursor: pointer;
-  position: fixed;
-  top: 10px;
-  right: 10px;
+  position: sticky;
+  top: 0;
 }
 .modal .close:hover,
 .modal .close:focus {
   opacity: 0.5;
 }
 .modal svg {
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   fill: #fff;
 }
-.modal ul {
+.icon-credits {
   width: 500px;
   max-width: 100%;
   margin: 0 auto;
+  background: #222;
+  cursor: auto;
+  height: 100%;
+  overflow-y: auto;
+  height: 100%;
+  position: relative;
+  border-radius: 16px;
+}
+ul {
+  padding: 32px 32px 32px 64px;
+  margin: 0;
 }
 .modal li {
   margin-bottom: 10px;
-}
-
-body.modal-showing .modal {
-  animation-name: modalFade;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease;
-  animation-duration: 0.4s;
-  animation-delay: 0.2s;
-  display: block;
 }
 
 @keyframes modalFade {

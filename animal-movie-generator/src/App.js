@@ -82,8 +82,12 @@ export default function App() {
     );
   };
 
-  function toggleModal() {
-    setModalOpen(!modalOpen);
+  function openModal() {
+    setModalOpen(true);
+  }
+
+  function closeModal() {
+    setModalOpen(false);
   }
 
   return (
@@ -94,11 +98,7 @@ export default function App() {
             <h1>Animal Movie Generator</h1>
             <p>
               My job is to help you find new things to watch, starring all of
-              your favourite Hollywood stars.
-            </p>
-            <p>
-              (Disclaimer: These particular stars might have fur, feathers, or
-              scales.)
+              your favourite furry, feathered, or scaley Hollywood&nbsp;stars.
             </p>
           </div>
         </section>
@@ -202,80 +202,92 @@ export default function App() {
           <button
             className="modal-button"
             id="modalButton"
-            onClick={toggleModal}
+            onClick={openModal}
+            aria-controls="modal"
+            aria-expanded={modalOpen}
           >
             The Noun Project Icon Attributions
           </button>
 
-          <div className="modal">
-            <button className="close" onClick={toggleModal}>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 352 512"
-              >
-                <title>Close</title>
-                <path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
-              </svg>
-              <span className="screen-reader-text">Close</span>
-            </button>
-            <div className="icon-credits">
-              <ul>
-                <li>Alligator by Yu luck from the Noun Project</li>
-                <li>
-                  Gorilla face by Icons Producer from the Noun Project (ape)
-                </li>
-                <li>Bat by Maxim Kulikov from the Noun Project</li>
-                <li>Beaver by Iconic from the Noun Project</li>
-                <li>bee by Syaiful Amri from the Noun Project</li>
-                <li>Bird by Chanut is Industries from the Noun Project</li>
-                <li>buffalo by Iconic from the Noun Project</li>
-                <li>Butterfly by BGBOXXX Design from the Noun Project</li>
-                <li>Camel by IYIKON from the Noun Project</li>
-                <li>Cat by bmijnlieff from the Noun Project</li>
-                <li>Chicken by BomSymbols from the Noun Project</li>
-                <li>Cow by Maxicons from the Noun Project</li>
-                <li>Deer by supalerk laipawat from the Noun Project</li>
-                <li>Dog by Iconic from the Noun Project</li>
-                <li>Dolphin by Iconic from the Noun Project</li>
-                <li>Duck by jauhari from the Noun Project</li>
-                <li>Eagle by tulpahn from the Noun Project</li>
-                <li>elephant face by Icons Producer from the Noun Project</li>
-                <li>Fish by b farias from the Noun Project</li>
-                <li>Fox by tulpahn from the Noun Project</li>
-                <li>Frog by Icons Producer from the Noun Project</li>
-                <li>Giraffe by monkik from the Noun Project</li>
-                <li>Goose by H Alberto Gongora from the Noun Project</li>
-                <li>Bear by ArmOkay from the Noun Project (grizzly)</li>
-                <li>Hamster by Martin LEBRETON from the Noun Project</li>
-                <li>Horse by Iconic from the Noun Project</li>
-                <li>Kangaroo by Template from the Noun Project</li>
-                <li>Leopard by Anniken & Andreas from the Noun Project</li>
-                <li>Lion by Iconic from the Noun Project</li>
-                <li>lizard by ArmOkay from the Noun Project</li>
-                <li>monkey by Nociconist from the Noun Project (chimpanzee)</li>
-                <li>Mouse by Anthony Bossard from the Noun Project</li>
-                <li>Panda by Nook Fulloption from the Noun Project</li>
-                <li>Penguin by iconixar from the Noun Project</li>
-                <li>Pig by Luiz Carvalho from the Noun Project</li>
-                <li>puma by Lars Meiertoberens from the Noun Project</li>
-                <li>Rabbit by wira wianda from the Noun Project</li>
-                <li>Racoon by Ahmad Nursalim from the Noun Project</li>
-                <li>Shark by Pham Duy Phuong Hung from the Noun Project</li>
-                <li>Sheep by Dmitry Mirolyubov from the Noun Project</li>
-                <li>Skunk by Georgiana Ionescu from the Noun Project</li>
-                <li>Snake by Icons Producer from the Noun Project</li>
-                <li>Spider by Ayub Irawan from the Noun Project</li>
-                <li>Swan by Bernd Lakenbrink from the Noun Project</li>
-                <li>Tiger by Iconic from the Noun Project</li>
-                <li>turtle by Ian Rahmadi Kurniawan from the Noun Project</li>
-                <li>Whale by priyanka from the Noun Project</li>
-                <li>Wolf by priyanka from the Noun Project</li>
-              </ul>
-            </div>
-          </div>
+          {modalOpen ? (
+            <>
+              <div className="modal" id="modal" onClick={closeModal}>
+                <div className="icon-credits">
+                  <button className="close" onClick={closeModal}>
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 352 512"
+                    >
+                      <title>Close</title>
+                      <path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
+                    </svg>
+                    <span className="screen-reader-text">Close</span>
+                  </button>
+                  <ul>
+                    <li>Alligator by Yu luck from the Noun Project</li>
+                    <li>
+                      Gorilla face by Icons Producer from the Noun Project (ape)
+                    </li>
+                    <li>Bat by Maxim Kulikov from the Noun Project</li>
+                    <li>Beaver by Iconic from the Noun Project</li>
+                    <li>bee by Syaiful Amri from the Noun Project</li>
+                    <li>Bird by Chanut is Industries from the Noun Project</li>
+                    <li>buffalo by Iconic from the Noun Project</li>
+                    <li>Butterfly by BGBOXXX Design from the Noun Project</li>
+                    <li>Camel by IYIKON from the Noun Project</li>
+                    <li>Cat by bmijnlieff from the Noun Project</li>
+                    <li>Chicken by BomSymbols from the Noun Project</li>
+                    <li>Cow by Maxicons from the Noun Project</li>
+                    <li>Deer by supalerk laipawat from the Noun Project</li>
+                    <li>Dog by Iconic from the Noun Project</li>
+                    <li>Dolphin by Iconic from the Noun Project</li>
+                    <li>Duck by jauhari from the Noun Project</li>
+                    <li>Eagle by tulpahn from the Noun Project</li>
+                    <li>
+                      elephant face by Icons Producer from the Noun Project
+                    </li>
+                    <li>Fish by b farias from the Noun Project</li>
+                    <li>Fox by tulpahn from the Noun Project</li>
+                    <li>Frog by Icons Producer from the Noun Project</li>
+                    <li>Giraffe by monkik from the Noun Project</li>
+                    <li>Goose by H Alberto Gongora from the Noun Project</li>
+                    <li>Bear by ArmOkay from the Noun Project (grizzly)</li>
+                    <li>Hamster by Martin LEBRETON from the Noun Project</li>
+                    <li>Horse by Iconic from the Noun Project</li>
+                    <li>Kangaroo by Template from the Noun Project</li>
+                    <li>Leopard by Anniken & Andreas from the Noun Project</li>
+                    <li>Lion by Iconic from the Noun Project</li>
+                    <li>lizard by ArmOkay from the Noun Project</li>
+                    <li>
+                      monkey by Nociconist from the Noun Project (chimpanzee)
+                    </li>
+                    <li>Mouse by Anthony Bossard from the Noun Project</li>
+                    <li>Panda by Nook Fulloption from the Noun Project</li>
+                    <li>Penguin by iconixar from the Noun Project</li>
+                    <li>Pig by Luiz Carvalho from the Noun Project</li>
+                    <li>puma by Lars Meiertoberens from the Noun Project</li>
+                    <li>Rabbit by wira wianda from the Noun Project</li>
+                    <li>Racoon by Ahmad Nursalim from the Noun Project</li>
+                    <li>Shark by Pham Duy Phuong Hung from the Noun Project</li>
+                    <li>Sheep by Dmitry Mirolyubov from the Noun Project</li>
+                    <li>Skunk by Georgiana Ionescu from the Noun Project</li>
+                    <li>Snake by Icons Producer from the Noun Project</li>
+                    <li>Spider by Ayub Irawan from the Noun Project</li>
+                    <li>Swan by Bernd Lakenbrink from the Noun Project</li>
+                    <li>Tiger by Iconic from the Noun Project</li>
+                    <li>
+                      turtle by Ian Rahmadi Kurniawan from the Noun Project
+                    </li>
+                    <li>Whale by priyanka from the Noun Project</li>
+                    <li>Wolf by priyanka from the Noun Project</li>
+                  </ul>
+                </div>
+              </div>
+            </>
+          ) : null}
         </div>
       </footer>
     </>
