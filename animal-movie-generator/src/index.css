@@ -640,7 +640,6 @@ footer p {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.6);
   color: #fff;
   padding: 128px 32px;
   animation-name: modalFade;
@@ -649,6 +648,15 @@ footer p {
   animation-duration: 0.4s;
   display: block;
   cursor: pointer;
+}
+
+.modal-background {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .modal .close {
